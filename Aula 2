@@ -1,0 +1,47 @@
+#lang racket
+(define a 65536)
+(define (f x)
+  (+ x (* 2 x)))
+(define (converte tc)
+  (cond
+    ((> tc 100) "vapor")
+    ((< tc 0) "gelo")
+    ((= tc 36.5) "febre")
+    (else(+ 32 (/(* tc 9) 5)))))
+
+;EXERCICIOS;
+
+(define (somar l)
+  (if (null? l)
+      0
+      (+ (car l) (somar(cdr l)))))
+
+(define (count_repetition l x)
+  (if (null? l)
+      0
+      (if (= (car l) x)
+      (+ 1 (count_repetition(cdr l)x))
+      (count_repetition (cdr l)x))))
+
+(define (first_remove l x)
+  (if (null? l)
+      '()
+      (if (= (car l) x)
+          (car l)
+          (cons (car l)(first_remove(cdr l)x)))))
+
+(define(cont_list l)
+  (if (null? l)
+      0
+      (+ 1 (cont_list (cdr l)))))
+
+(define (doble_list l)
+  (if (null? l)
+      '()
+      (cons (* 2 (car l))(doble_list (cdr l)))))
+
+(define (my_map f l)
+  (if (null? l)
+      '()
+      (cons (f (car l)) (my_map f (cdr l)))))
+
