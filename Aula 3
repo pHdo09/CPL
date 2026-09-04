@@ -1,0 +1,36 @@
+#lang racket
+(define(pertence? x l)
+  (if (null? l)
+  #f
+  (or(= x (car l))
+     (pertence? x (cdr l)))))
+
+(define(existe? p l)
+  (if (null? l)
+      #f
+      (or (p (car l))
+          (existe? p (cdr l)))))
+
+(define (todos? t l)
+  (if (null? l)
+      #t
+      (and (t (car l))
+          (todos? t (cdr l)))))
+
+(define (gaguinho l)
+  (if (null? l)
+      '()
+      (cons (car l) (cons (car l) (gaguinho (cdr l))))))
+
+(define (my-append l1 l2)
+  (if (null? l1)
+      l2
+      (cons (car l1) (my-append(cdr l1) l2))))
+
+(define (zipper l1 l2)
+  (cond [(null? l1) '()]
+        [(null? l2) '()]
+        [else (cons (car l1)
+                    (cons (car l2)
+                          (zipper (cdr l1) (cdr l2))))]))
+ 
